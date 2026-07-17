@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>크루레이블 OT 큐카드 — 오프닝</title>
+<style>
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/GmarketSans/GmarketSansMedium.woff2') format('woff2');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/GmarketSans/GmarketSansBold.woff2') format('woff2');
+    font-weight: 700;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #1c1c1e;
+    font-family: 'GmarketSans', -apple-system, sans-serif;
+  }
+
+  .stage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* 좌우 탭 영역 — 태블릿을 가로로 들었을 때 양쪽 엄지로 넘기기 */
+  .nav-zone {
+    flex: 0 0 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #6b6b70;
+    transition: background 0.15s;
+  }
+  .nav-zone:active { background: rgba(255,255,255,0.05); }
+  .nav-zone svg { width: 32px; height: 32px; }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4vh 3vw;
+    position: relative;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3vh;
+  }
+
+  .card-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #8a8a8f;
+    letter-spacing: 0.02em;
+  }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+  }
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #444448;
+    transition: background 0.2s;
+  }
+  .dot.active { background: #f5f5f0; }
+
+  .content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 60vh;
+    overflow: hidden;
+  }
+
+  .tap-title {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .title-text {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #f5f5f0;
+  }
+
+  .tap-hint {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #6b6b70;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .script-wrap {
+    display: none;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid #38383c;
+    overflow-y: auto;
+    max-height: 32vh;
+  }
+  .script-wrap.open { display: block; }
+
+  .script-label {
+    font-size: 13px;
+    color: #6b6b70;
+    margin-bottom: 12px;
+  }
+
+  .script-body {
+    font-size: 24px;
+    line-height: 1.9;
+    color: #c9c9cd;
+    font-weight: 500;
+  }
+
+  /* 큰 흐름 목록(3번 카드)용 */
+  .flow-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #c9c9cd;
+  }
+  .flow-list li { display: flex; align-items: baseline; gap: 10px; }
+  .flow-list .num { color: #6b6b70; font-weight: 700; min-width: 22px; }
+
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <button class="nav-zone" id="prevBtn" aria-label="이전 카드">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+
+  <div class="main">
+    <div class="top-row">
+      <div class="card-label" id="cardLabel"></div>
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <div class="content-area">
+      <button class="tap-title" id="tapArea">
+        <div class="title-text" id="titleText"></div>
+      </button>
+      <div class="tap-hint" id="tapHint">큰 문장을 눌러 대본 확인</div>
+      <div class="script-wrap" id="scriptWrap">
+        <div class="script-label">실제 대본</div>
+        <div class="script-body" id="scriptBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="nav-zone" id="nextBtn" aria-label="다음 카드">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+</div>
+
+<script>
+const cards = [
+  {
+    label: "1 / 4 · 인사 & 톤",
+    title: "첫 만남, 프로젝트가 시작되는 순간",
+    script: "안녕하세요/ 반갑습니다/ 크루레이블 신PD입니다// 오늘 이 자리에/ 와주셔서/ 정말 감사합니다/ 사실 오늘은/ 여러분에게도 저에게도/ 첫 만남이자/ 크루레이블이라는 프로젝트가/ 실제로 시작되는/ 첫 순간입니다// 이 자리에 계신 분들은/ 각자 다른 이유로/ 여기까지 오셨을 겁니다/ 방송을 해보고 싶었던 분/ 새로운 캐릭터를 발견하고 싶었던 분/ 또는 그냥/ 어떤 사람들을 만나게 될지/ 궁금하셨던 분도/ 계실 거고요/",
+    isFlow: false
+  },
+  {
+    label: "2 / 4 · 핵심 문장",
+    title: "\"이유는 다르지만, 오늘부터 여러분은 같은 팀입니다\"",
+    script: "이유는 다르지만/ 오늘부터 여러분은/ 같은 팀입니다/ 그리고 그 팀이/ 앞으로 4주 동안/ 어떤 시간을 함께 보내게 될지/ 오늘 이 자리에서/ 그 그림을 먼저/ 그려드리려고 합니다//",
+    isFlow: false
+  },
+  {
+    label: "3 / 4 · 오늘 흐름",
+    title: "오늘 전달드릴 8가지",
+    script: "먼저/ 여러분이 앞으로 방송하게 될/ 스튜디오를/ 직접 둘러보실 거고요/ 그 다음/ 크루레이블이 어떤 철학으로/ 이 프로젝트를 시작했는지/ 말씀드릴 겁니다/ 그리고 팀 인원에 대한/ 안내도 함께 드릴 예정입니다// 잠깐 쉬는 시간을 가진 뒤엔/ 서로를 알아가는 시간을/ 가지실 거고요/ 이후에는 방송 안에서/ 어떤 역할과 캐릭터들이/ 존재할 수 있는지/ 그리고 크루레이블이 방송을 대하는/ 태도와 원칙에 대해서도/ 말씀드리겠습니다/ 마지막으로/ 앞으로 4주간의 일정을/ 함께 확인하고/ 궁금하신 점들을/ 편하게 질문해주시는 시간으로/ 마무리하겠습니다//",
+    isFlow: true,
+    flowItems: ["스튜디오 투어", "크루레이블 철학", "팀 인원 안내", "(휴식)", "아이스브레이킹", "포지션 & 방송 원칙", "4주 일정 안내", "Q&A"]
+  },
+  {
+    label: "4 / 4 · 클로징 톤",
+    title: "\"완벽하게 이해하는 자리가 아니라, 느낌만 가져가는 자리\"",
+    script: "한 가지만/ 먼저 말씀드리고 싶은 게 있습니다/ 오늘 많은 이야기를/ 듣게 되실 텐데/ 전부 다 외우거나/ 완벽하게 이해하실 필요는 없습니다/ 오히려 오늘은/ \"아/ 이런 곳이구나\"/ \"이런 사람들과 함께하는구나\"/ 그 느낌만 편하게/ 가져가셔도 충분합니다// 그럼/ 지금부터 시작하겠습니다/",
+    isFlow: false
+  }
+];
+
+let idx = 0;
+let expanded = false;
+
+const cardLabel = document.getElementById('cardLabel');
+const titleText = document.getElementById('titleText');
+const scriptWrap = document.getElementById('scriptWrap');
+const scriptBody = document.getElementById('scriptBody');
+const tapHint = document.getElementById('tapHint');
+const dots = document.getElementById('dots');
+
+function render() {
+  const c = cards[idx];
+  cardLabel.textContent = c.label;
+  titleText.textContent = c.title;
+
+  if (c.isFlow) {
+    scriptBody.innerHTML = '<ol class="flow-list">' +
+      c.flowItems.map((item, i) => `<li><span class="num">${i+1}</span>${item}</li>`).join('') +
+      '</ol>';
+  } else {
+    scriptBody.textContent = c.script;
+  }
+
+  scriptWrap.classList.toggle('open', expanded);
+  tapHint.style.display = expanded ? 'none' : 'flex';
+
+  dots.innerHTML = '';
+  cards.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === idx ? ' active' : '');
+    dots.appendChild(d);
+  });
+}
+
+document.getElementById('tapArea').addEventListener('click', () => {
+  expanded = !expanded;
+  render();
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+  idx = (idx - 1 + cards.length) % cards.length;
+  expanded = false;
+  render();
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  idx = (idx + 1) % cards.length;
+  expanded = false;
+  render();
+});
+
+render();
+</script>
+
+</body>
+</html>
