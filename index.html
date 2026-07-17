@@ -72,6 +72,12 @@
     flex: 1;
     overflow-y: auto;
     padding: 2.5vh 6vw 3vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-inner {
+    margin: auto 0;
   }
 
   .section + .section {
@@ -205,12 +211,13 @@ function render() {
   cardLabel.textContent = p.label;
   mainArea.scrollTop = 0;
 
-  mainArea.innerHTML = p.sections.map(s => {
+  const sectionsHtml = p.sections.map(s => {
     const body = s.flowItems
       ? '<ol class="flow-list">' + s.flowItems.map((item, i) => `<li><span class="num">${i+1}</span>${item}</li>`).join('') + '</ol>'
       : `<div class="script-body">${s.script}</div>`;
     return `<div class="section"><div class="title-text">${s.title}</div>${body}</div>`;
   }).join('');
+  mainArea.innerHTML = `<div class="main-inner">${sectionsHtml}</div>`;
 
   dots.innerHTML = '';
   pages.forEach((_, i) => {
