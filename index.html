@@ -6,36 +6,14 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#1c1c1e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
+<meta name="theme-color" content="#1C1C1E">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>크루레이블 OT 큐카드 — 오프닝</title>
-<script>
-  (function() {
-    var iconSvg = 'data:image/svg+xml,' + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192">' +
-      '<rect width="192" height="192" fill="#1c1c1e"/>' +
-      '<text x="96" y="112" font-size="68" fill="#f5f5f0" text-anchor="middle" font-family="sans-serif">OT</text>' +
-      '</svg>'
-    );
-    var manifest = {
-      name: '크루레이블 OT 큐카드',
-      short_name: 'OT 큐카드',
-      start_url: './index.html',
-      display: 'standalone',
-      orientation: 'portrait',
-      background_color: '#1c1c1e',
-      theme_color: '#1c1c1e',
-      icons: [
-        { src: iconSvg, sizes: '192x192', type: 'image/svg+xml' },
-        { src: iconSvg, sizes: '512x512', type: 'image/svg+xml' }
-      ]
-    };
-    var blob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
-    var link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = URL.createObjectURL(blob);
-    document.head.appendChild(link);
-  })();
-</script>
 <style>
   @font-face {
     font-family: 'GmarketSans';
