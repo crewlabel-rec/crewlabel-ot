@@ -2,7 +2,11 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1200, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1c1c1e">
 <title>크루레이블 OT 큐카드 — 오프닝</title>
 <style>
   @font-face {
@@ -30,42 +34,18 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: stretch;
-  }
-
-  /* 좌우 탭 영역 — 태블릿을 가로로 들었을 때 양쪽 엄지로 넘기기 */
-  .nav-zone {
-    flex: 0 0 12%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #6b6b70;
-    transition: background 0.15s;
-  }
-  .nav-zone:active { background: rgba(255,255,255,0.05); }
-  .nav-zone svg { width: 32px; height: 32px; }
-
-  .main {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 4vh 3vw;
-    position: relative;
   }
 
   .top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3vh;
+    padding: 4vh 6vw 0;
   }
 
   .card-label {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: #8a8a8f;
     letter-spacing: 0.02em;
@@ -73,23 +53,23 @@
 
   .dots {
     display: flex;
-    gap: 8px;
+    gap: 9px;
   }
   .dot {
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #444448;
     transition: background 0.2s;
   }
   .dot.active { background: #f5f5f0; }
 
-  .content-area {
+  .main {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-height: 60vh;
+    padding: 3vh 6vw;
     overflow: hidden;
   }
 
@@ -103,87 +83,113 @@
   }
 
   .title-text {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 700;
     line-height: 1.5;
     color: #f5f5f0;
   }
 
   .tap-hint {
-    margin-top: 20px;
-    font-size: 15px;
+    margin-top: 24px;
+    font-size: 17px;
     color: #6b6b70;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
 
   .script-wrap {
     display: none;
-    margin-top: 28px;
-    padding-top: 28px;
+    margin-top: 32px;
+    padding-top: 32px;
     border-top: 1px solid #38383c;
     overflow-y: auto;
-    max-height: 32vh;
   }
   .script-wrap.open { display: block; }
 
   .script-label {
-    font-size: 13px;
+    font-size: 14px;
     color: #6b6b70;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .script-body {
-    font-size: 24px;
-    line-height: 1.9;
+    font-size: 26px;
+    line-height: 1.95;
     color: #c9c9cd;
     font-weight: 500;
   }
 
-  /* 큰 흐름 목록(3번 카드)용 */
   .flow-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 24px;
-    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 26px;
     font-weight: 500;
     color: #c9c9cd;
   }
-  .flow-list li { display: flex; align-items: baseline; gap: 10px; }
-  .flow-list .num { color: #6b6b70; font-weight: 700; min-width: 22px; }
+  .flow-list li { display: flex; align-items: baseline; gap: 12px; }
+  .flow-list .num { color: #6b6b70; font-weight: 700; min-width: 26px; }
+
+  /* 하단 넘기기 바 — 세로로 쥐었을 때 양쪽 엄지가 자연스럽게 닿는 위치 */
+  .bottom-bar {
+    display: flex;
+    height: 14vh;
+    min-height: 96px;
+    border-top: 1px solid #2c2c2e;
+  }
+
+  .nav-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #9a9a9f;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .nav-zone:active { background: rgba(255,255,255,0.06); }
+  .nav-zone svg { width: 26px; height: 26px; }
+  #prevBtn { border-right: 1px solid #2c2c2e; }
 
 </style>
 </head>
 <body>
 
 <div class="stage">
-  <button class="nav-zone" id="prevBtn" aria-label="이전 카드">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-  </button>
+  <div class="top-row">
+    <div class="card-label" id="cardLabel"></div>
+    <div class="dots" id="dots"></div>
+  </div>
 
   <div class="main">
-    <div class="top-row">
-      <div class="card-label" id="cardLabel"></div>
-      <div class="dots" id="dots"></div>
-    </div>
-
-    <div class="content-area">
-      <button class="tap-title" id="tapArea">
-        <div class="title-text" id="titleText"></div>
-      </button>
-      <div class="tap-hint" id="tapHint">큰 문장을 눌러 대본 확인</div>
-      <div class="script-wrap" id="scriptWrap">
-        <div class="script-label">실제 대본</div>
-        <div class="script-body" id="scriptBody"></div>
-      </div>
+    <button class="tap-title" id="tapArea">
+      <div class="title-text" id="titleText"></div>
+    </button>
+    <div class="tap-hint" id="tapHint">큰 문장을 눌러 대본 확인</div>
+    <div class="script-wrap" id="scriptWrap">
+      <div class="script-label">실제 대본</div>
+      <div class="script-body" id="scriptBody"></div>
     </div>
   </div>
 
-  <button class="nav-zone" id="nextBtn" aria-label="다음 카드">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-  </button>
+  <div class="bottom-bar">
+    <button class="nav-zone" id="prevBtn" aria-label="이전 카드">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      이전
+    </button>
+    <button class="nav-zone" id="nextBtn" aria-label="다음 카드">
+      다음
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
 </div>
 
 <script>
