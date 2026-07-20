@@ -52,8 +52,8 @@
 
   .card-label {
     font-size: 18px;
-    font-weight: 500;
-    color: #8a8a8f;
+    font-weight: 600;
+    color: #c9c9cd;
     letter-spacing: 0.02em;
   }
 
@@ -119,12 +119,22 @@
     font-weight: 700;
   }
 
+  .top-row-left {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
   .part-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #6b6b70;
-    letter-spacing: 0.02em;
-    margin-bottom: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #a8f0d0;
+    letter-spacing: 0.01em;
+  }
+
+  .top-sep {
+    color: #444448;
+    font-size: 18px;
   }
 
   .flow-list {
@@ -186,8 +196,9 @@
 
 <div class="stage">
   <div class="top-row">
-    <div>
+    <div class="top-row-left">
       <div class="part-label" id="partLabel"></div>
+      <div class="top-sep">/</div>
       <div class="card-label" id="cardLabel"></div>
     </div>
     <div class="dots" id="dots"></div>
