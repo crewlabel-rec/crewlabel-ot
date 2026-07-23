@@ -119,6 +119,68 @@
     font-weight: 700;
   }
 
+  .kakao-card {
+    background: #2a2a2d;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 22px;
+    color: #e8e8ea;
+    line-height: 1.6;
+  }
+
+  .choice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  .choice-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #232326;
+    border: 0.5px solid #38383c;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 20px;
+    color: #c9c9cd;
+    line-height: 1.5;
+  }
+
+  .choice-num {
+    color: #a8f0d0;
+    font-weight: 700;
+    min-width: 18px;
+  }
+
+  .note-box {
+    background: rgba(196,138,90,0.12);
+    border-left: 3px solid #d9a679;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 14px 0;
+  }
+
+  .note-label {
+    font-size: 13px;
+    color: #d9a679;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .note-body {
+    font-size: 18px;
+    color: #c9b699;
+    line-height: 1.5;
+  }
+
+  .highlight {
+    color: #f5f5f0;
+    font-weight: 700;
+  }
+
   .top-row-left {
     display: flex;
     align-items: baseline;
@@ -223,7 +285,7 @@
 <script>
 const pages = [
   {
-    label: "1 / 5 · 오프닝",
+    label: "1 / 6 · 오프닝",
     part: "PART1 · 연결의 시작",
     mode: "briefing",
     sections: [
@@ -251,7 +313,7 @@ const pages = [
     ]
   },
   {
-    label: "2 / 5 · 스튜디오 소개",
+    label: "2 / 6 · 스튜디오 소개",
     part: "PART1 · 연결의 시작",
     mode: "ppt",
     sections: [
@@ -274,7 +336,7 @@ const pages = [
     ]
   },
   {
-    label: "3 / 5 · 나이 비공개 원칙",
+    label: "3 / 6 · 나이 비공개 원칙",
     part: "PART1 · 연결의 시작",
     mode: "mixed",
     sections: [
@@ -293,7 +355,7 @@ const pages = [
     ]
   },
   {
-    label: "4 / 5 · 자기소개",
+    label: "4 / 6 · 자기소개",
     part: "PART1 · 연결의 시작",
     mode: "mixed",
     sections: [
@@ -316,7 +378,7 @@ const pages = [
     ]
   },
   {
-    label: "5 / 5 · 팀채팅 소통방식",
+    label: "5 / 6 · 팀채팅 소통방식",
     part: "PART2 · 크루레이블 토크 전략과 강력한 무기",
     mode: "mixed",
     sections: [
@@ -331,6 +393,29 @@ const pages = [
       {
         title: "슬라이드2 · 톡방 소통방식 안내",
         script: "추가 사항 2가지만/ 조금 더 설명드릴게요//\n\n첫 번째/ 팀원 간 답장은/ 의무가 아닙니다// 빨리 확인 못 하셨다고/ 눈치 보지 않으셔도 됩니다/ 저는 이 톡방이/ 부담스러운 공간이 아니라/ 편하게 의견 나누는 공간이 되길 바랍니다// 다만/ 공지 확인만큼은/ 조금 다릅니다/ 방송 진행에 있어/ 중요한 공지를 놓쳐서/ 방송 당일 문제가 생기는 경우가/ 있을 수 있습니다// 업무 중 공지를 못 본 채/ 팀원 간 대화가 길어지면/ 공지 메시지가 위로/ 밀려 올라가버릴 수도 있잖아요?/ 그래서 수신 확인이 안 되어 있으면/ 개별로 연락드려서/ 챙겨드리기 위함이니/ 공지에 대한 수신 확인은/ 신경 써주시길 당부드립니다//\n\n두 번째/ 방송에서 하고 싶은 이야기를/ 단톡방에서 너무 미리 다 풀어버리면/ 막상 카메라 앞에서는/ 이미 한 얘기처럼 들릴 수 있고/ 그만큼 리액션도 안 나올 겁니다// 그러니까 재밌는 에피소드는/ 살짝 아껴두셨다가/ 방송에서 꺼내주시면/ 훨씬 좋습니다//\n\n<span class=\"stagecue\">(톤을 살짝 낮추고 진지하게)</span>\n\n그리고 하나만 더/ 당부드리고 싶은 게 있습니다// 사람이 여럿 모이다 보면/ 가끔 의견이 다르거나/ 불편한 상황이 생길 수도 있습니다// 혹시라도 단톡방 안에서/ 누군가와 마찰이 있거나/ 나만 대화에서 겉도는 것 같다고 느껴지면/ 절대 혼자 참지 마시고/ 편하게 저한테 개인적으로/ 말씀해주세요/ 제가 바로 챙기겠습니다//\n\n이 정도만 지켜주시면/ 나머지는 정말/ 자유롭게 편하게 쓰시는 공간입니다//\n\n<span class=\"qline\">혹시/ 지금까지 말씀드린 내용 중/ 궁금한 사안 있으시면/ 질문 주셔도 됩니다//</span>\n\n<span class=\"stagecue\">(질문 있을 시)</span> 궁금증 해결\n\n<span class=\"stagecue\">(질문 없을 시)</span> 없으시면 다음으로 넘어가겠습니다"
+      }
+    ]
+  },
+  {
+    label: "6 / 6 · 모의방송 시뮬레이션",
+    part: "PART2 · 크루레이블 토크 전략과 강력한 무기",
+    mode: "mixed",
+    sections: [
+      {
+        title: "시뮬레이션 시작 (A섹션 이동 + 좌석배정)",
+        script: "자! 이제/ A섹션으로 이동해서/ 모의방송 시뮬레이션을/ 한번 진행해볼 예정입니다// 이동하기 전에/ 어떻게 진행되는지/ 간단히 설명부터 드리고/ 움직이겠습니다//\n\n먼저/ 오늘 하는 건/ 진짜 모의방송이 아니라/ '모의방송 시뮬레이션'입니다// 진짜 모의방송은/ 다음 주부터/ 4주 동안/ 총 4번에 걸쳐서/ 진행됩니다//\n\n오늘 집에 가시면/ 하루 이틀 안에/ 다음 주 주제와 레퍼런스가/ 단톡방으로 올라올 거고요// 그때부터/ 일상을 보내시면서도/ 머릿속으로는/ '이번 주 주제에 대해/ 이 얘기 하면 재밌겠다'/ '이건 나만 할 수 있는 얘기인데'/ 같은 구상을 하게 됩니다//\n\n오늘 이 시뮬레이션은/ 바로 그 구상 과정을/ 조금 더 입체적으로/ 떠올려볼 수 있게 하기 위한 자리입니다// 머릿속에만 구상할 때와/ 한 번이라도 해본 상태에서/ 구상하는 거랑은/ 입체적으로 그려지는 정도가/ 완전히 달라지기 때문이에요//\n\n전체 진행은/ 제가 맡을 예정이니까/ 크게 부담 가지실 필요는 없고요// 여러분은 오늘/ 처음 만난 사이라/ 사실 좋은 케미가 나올 수가 없습니다// 그러니까/ 부담은 내려놓으시고/ 제가 진행하는 대로/ 자유롭게/ 생각과 이야기를/ 던져봐 주시면 됩니다//\n\n진행 방식은요/ 저기 자리가 6개죠// 우리는 7명이고요// 그래서 한 분은/ 대기 좌석에 앉으실 거고요/ 방송이 진행되는 동안 실시간으로/ 중간에 제가 한 분씩/ 바꿔드릴 텐데/ 이건 잘하고 못하고랑/ 전혀 상관없습니다// 그냥 순서예요//\n\n그래서 먼저/ 처음에 대기할 한 분을/ 정해볼게요// 간단하게/ 가위바위보로/ 이긴 분 한 분이/ 먼저 대기조로/ 시작하겠습니다//\n\n그럼 먼저/ 대기하실 한 분부터/ 가위바위보로/ 정해볼까요?//\n\n<span class=\"stagecue\">(가위바위보 진행)</span>\n\n좋습니다// 착석 자리는/ 화면으로 설명드릴게요//\n\nOO님 A / OO님 B / OO님 C / OO님 D / OO님 E / OO님 F / OO님 대기 좌석입니다//\n\n<span class=\"stagecue\">(출연자에게 설명하지는 않지만, 남녀 교차로 앉는 배정으로 자리 세팅)</span>\n\n자리에 앉으시면/ 아래쪽에/ 개별 인이어셋이 있습니다// 양쪽 다 모두 착용해주시면/ 방송 준비가 끝난 겁니다//\n\n지금 이동하실게요//"
+      },
+      {
+        title: "섹션01 · 남자들이 좋아하는 카톡",
+        script: "<span class=\"stagecue\">(오프닝: 크루레이블 오프닝 BGM + 진행자 멘트)</span>\n\n오늘의 주제는 '남자들이 좋아하는 카톡은 무엇일까?' 입니다.\n\n썸에서 뭔가 진전이 잘 안 되고 항상 끝난다면, 물론 여러 가지 이유가 있을 수 있지만 혹시 카톡에 문제가 있었던 것은 아닐까 한번 생각해보자는 취지에서 준비했습니다. 보통 남자들이 좋아하는 카톡 답변이 따로 있더라고요. 여기 크루레이블 멤버들은 어떤 카톡을 좋아하는지 궁금해서 준비했습니다.\n\n제가 상황과 카톡 내용을 이야기하면, 먼저 여자분들이 남자가 좋아할 것 같은 답을 골라주시고, 뒤이어 남자분들도 골라주시면 됩니다.\n\n<div class=\"note-label\" style=\"margin-top:18px;\">아젠다A — 소개팅 전, 약속 정하기</div>\n\n상황은 소개팅 전, 아직 안 만난 거예요. 약속 정할 때입니다.\n\n<div class=\"kakao-card\">\"안녕하세요 OO씨\"<br>\"오늘 저녁 잊지 않으셨죠?\"<br>\"혹시 특별히 드시고 싶으신 거 있나요?\"</div>\n\n자, 여기에 대한 소개팅녀의 답변입니다. 골라보세요.\n\n<div class=\"choice-list\">\n<div class=\"choice-item\"><span class=\"choice-num\">1</span>\"아! 예약 안 하셨어요? 제가 예약하고 장소 알려드릴게요\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">2</span>\"네 그럼요, 전 아무거나 좋아요\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">3</span>\"그럼요 당연히 기억하고 있죠! 뭐 먹을지는 만나서 정할까요?\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">4</span>\"네 그럼요, 저는 다 잘 먹긴 하는데 고기를 좋아해요\"</div>\n</div>\n\n여성 크루분들이 먼저 한 명씩 고르고 이유를 말해주시면 됩니다. 누구부터 할까요?\n\n<div class=\"note-box\"><div class=\"note-label\">진행 메모</div><div class=\"note-body\">답변 종료 후, 남성 크루분들도 한 명씩 고르고 이유를 물어본다</div></div>\n\n실제로 남자들이 첫 만남 때는 특히나 데이트 메뉴를 고르는 데 신경이 쓰인다고 합니다.\n\n<div class=\"note-box\"><div class=\"note-label\">진행 메모</div><div class=\"note-body\">계속 받아서 출연자들의 경험담·지인 사연이 나오게 유도한다. 유도하지 않아도 첫 시뮬레이션에서 바로 멘트를 받는 사람은 기억해둔다 — 이후 활약상이 기대되기 때문이다</div></div>\n\n<span class=\"highlight\">마무리: 남자들이 첫 만남 전에 어떤 메뉴를 고를지 선택의 폭을 줄여주는 게 좋다고 합니다.</span>\n\n<div class=\"note-label\" style=\"margin-top:22px;\">아젠다B — 술자리 취향 묻기</div>\n\n<div class=\"kakao-card\">\"혹시 술은 잘 드세요?\"<br>\"주종은 어떤 걸 좋아하시나요?\"</div>\n\n<div class=\"choice-list\">\n<div class=\"choice-item\"><span class=\"choice-num\">1</span>\"네 못 먹지는 않죠! 저는 와인 아니면 소주가 좋습니다\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">2</span>\"저 술은 잘 못하긴 하는데, OO씨랑 먹으면 조금 먹을 수 있을 것 같아요\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">3</span>\"그렇게 잘 마시진 않지만, 분위기 맞출 정도는 마셔요. 소맥 좋아해요\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">4</span>\"아! 오늘 달리는 건가요? ㅋㅋㅋㅋ 저는 다 괜찮은데 OO씨는 뭐 좋아해요?\"</div>\n</div>\n\n여성 크루분들, 남성분들, 순서대로 남자들은 어떤 답변을 좋아할지 골라주세요.\n\n<div class=\"note-box\"><div class=\"note-label\">진행 메모</div><div class=\"note-body\">경험담 또는 지인 사연담 유도 → 전체 의견 듣고 MC 결론 도출</div></div>\n\n<div class=\"note-label\" style=\"margin-top:22px;\">아젠다C — 소개팅 후 재만남 제안</div>\n\n자, 이제 조금 어려워집니다. 소개팅 후 남자의 카톡입니다.\n\n<div class=\"kakao-card\">\"오늘 너무 즐거웠습니다\"<br>\"한번 더 뵙고 싶은데.. 이번 주 시간 어떠세요?\"</div>\n\n<div class=\"choice-list\">\n<div class=\"choice-item\"><span class=\"choice-num\">1</span>\"이번 주는 선약이 있어서요.. 다음 주 토요일은 괜찮아요\" <span style=\"color:#6b6b70;\">(한 스텝 튕김)</span></div>\n<div class=\"choice-item\"><span class=\"choice-num\">2</span>\"저도 너무 즐거웠어요, 그럼 이번 주 토요일 어떠세요?\" <span style=\"color:#6b6b70;\">(솔직한 스타일)</span></div>\n<div class=\"choice-item\"><span class=\"choice-num\">3</span>\"저야말로 시간 가는 줄 몰랐네요! 다음 주 금요일이나 토요일 만날까요?\" <span style=\"color:#6b6b70;\">(스케줄상 미루는 느낌)</span></div>\n<div class=\"choice-item\"><span class=\"choice-num\">4</span>\"오! 좋아요, 저는 아무 때나 콜이에요\" <span style=\"color:#6b6b70;\">(저 세상 텐션)</span></div>\n</div>\n\n<div class=\"note-box\"><div class=\"note-label\">진행 메모</div><div class=\"note-body\">경험담 유도 → 전체 의견 듣고 MC 결론 도출</div></div>\n\n<div class=\"note-label\" style=\"margin-top:22px;\">아젠다D — 썸남의 칭찬</div>\n\n<div class=\"kakao-card\">\"그런데 남자들한테 인기 많으실 것 같아요\"</div>\n\n<div class=\"choice-list\">\n<div class=\"choice-item\"><span class=\"choice-num\">1</span>\"없지는 않죠 ㅋㅋㅋㅋㅋ\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">2</span>\"저 남사친 하나도 없는데.. 인기 하나도 없어요\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">3</span>\"아~ 그래 보이나요? 칭찬이죠? 고마워요~\"</div>\n<div class=\"choice-item\"><span class=\"choice-num\">4</span>\"에이~ 아니에요~ 제가 보기엔 OO씨가 더 인기 많으실 것 같은데\"</div>\n</div>\n\n실제로 많은 남성분들이 고른 답변은 <span class=\"highlight\">\"저 남사친 하나도 없는데.. 인기 하나도 없어요\"</span>였어요. 센스 있는 여자의 답변도 하나 소개하면: <span class=\"highlight\">\"인기 없진 않지만 남자랑은 친구 안 해요\"</span>\n\n<div class=\"note-label\" style=\"margin-top:22px;\">마무리</div>\n\n1. 남자가 질문을 던졌을 때, 다시 남자한테 똑같은 질문을 던져주면서 의사를 물어보는 거, 나쁘지 않다고 합니다.\n2. 선택권의 폭을 남자에게 확 줄여주는 게 진짜 고맙다고 합니다.\n\n<div class=\"note-box\"><div class=\"note-label\">운영 메모</div><div class=\"note-body\">섹션01이 너무 빨리 끝나면 섹션02로 이어간다. 충분히 분량이 나오면 섹션01로 마무리한다</div></div>"
+      },
+      {
+        title: "섹션02 · 스킨십에 대한 남녀 차이 (예비)",
+        script: "<span class=\"stagecue\">(오프닝: 크루레이블 오프닝 BGM + 진행자 멘트를 출연자 한 명이 자원·지목으로 직접 진행)</span>\n\n오늘의 주제는 '스킨십에 대한 남녀 차이', 이 차이는 왜 존재하는가?\n\n<div class=\"note-label\">아젠다A — 도끼병</div>\n\n도끼병은 남자가 더 많을까요? 여자가 더 많을까요?\n\n<div class=\"note-box\"><div class=\"note-label\">진행 메모</div><div class=\"note-body\">출연자들의 대답에 따라 이유를 꼭 물어본다</div></div>\n\n답은, 진화심리학적 관점에서 봤을 때 남자가 더 많다고 합니다. 여자가 남자의 팔을 잡았다고 생각해보면, 남자는 크게 2가지 착각을 할 수 있습니다.\n\n<div class=\"choice-list\">\n<div class=\"choice-item\"><span class=\"choice-num\">①</span>여자가 관심 없는데 있다고 착각 — 불이익은 거의 없음 (고백했다가 거절당하는 창피함 정도)</div>\n<div class=\"choice-item\"><span class=\"choice-num\">②</span>여자가 관심 있는데 없다고 착각 — 불이익이 큼 (좋아했던 사람을 그대로 놓침)</div>\n</div>\n\n그래서 ②번 착각을 하는 남자들의 DNA는 점점 적게 남고, ①번 착각을 하는 남자들의 DNA는 점점 많이 남게 되었다 — 진화론적으로 남자가 여자보다 도끼병이 많을 수밖에 없다는 결론입니다. 여자는 임신·출산·육아라는 기간이 있어서 횟수와 DNA의 상관관계가 남자만큼 크지 않고요.\n\n<span class=\"highlight\">그래서 남자는 낯선 여자의 스킨십을 호의적으로 받아들이기 쉽다는 겁니다.</span>\n\n관련 실험도 있는데요, 남녀 참가자에게 각각 이성 스태프를 붙이고 스킨십 유무에 따른 호감도를 측정했더니, 남성은 스킨십 시 호감도가 크게 올랐고 여성은 오히려 낮아졌다고 합니다. \"이래서 여자들이 매너손에 환장하는 거다\"라는 겁니다.\n\n<div class=\"note-box\"><div class=\"note-label\">진행 메모</div><div class=\"note-body\">출연자들의 생각과 대화 유도</div></div>\n\n<div class=\"note-label\" style=\"margin-top:22px;\">아젠다B — 자유 경험담</div>\n\n아직 친하지 않은 낯선 이성의 스킨십 중에서 심쿵했던 것, 혹은 반대로 아니었던 것 있나요?\n\n<div class=\"note-label\" style=\"margin-top:22px;\">아젠다C — 마무리 자유 토크</div>\n\n마음에 드는 이성에게 내가 잘하는 스킨십, 또는 내가 본 특이한 스킨십이 있을까요?"
+      },
+      {
+        title: "시뮬레이션 마무리 & PART2 클로징",
+        script: "좋습니다// 방송 시뮬레이션은/ 여기까지 할게요//\n\n처음 만난 사이인데도/ 다들 생각보다/ 훨씬 잘 받아주셨습니다//\n\n그런데 오늘 다뤘던 두 주제/ '카톡'이랑 '스킨십'/ 이거 아무 이유 없이/ 고른 게 아닙니다//\n\n이유는/ 다시 자리로 돌아가서/ 말씀드릴게요// 원래 자리로 이동하겠습니다//\n\n<span class=\"stagecue\">(B섹션 자리 복귀 후)</span>\n\n지금 시뮬레이션 하시면서/ 케미가 잘 안 터진 거/ 당연합니다// 오늘 처음 만나셨으니까요// 그런데 그것과 별개로/ 여러분이 나중에 친해져서/ 케미력이 생긴다고 해도/ 방송 현장에서는/ 주제를 듣고/ <span class=\"pronounce\">즉흥적</span>으로/ 재미있는 이야기를 꺼내기가/ 쉽지 않습니다//\n\n어때요?/ 아까 주제를 말씀드렸을 때/ 바로바로/ 받아치는 이야기나 멘트가/ 생각나셨나요?/ 그때는 막상 기억이 안 났다가/ 지나고 나서/ 생각나는 경우도/ 많으실 겁니다//\n\n그래서/ 매주 방송이 끝나면/ 1~2일 안에/ 다음 주 주제와 레퍼런스를/ 단톡방에 올려드립니다// 그럼 여러분은/ 일주일 동안/ 내 경험을 뭘 말할지 생각해보고/ 경험이 없으면/ 지인 썰을 준비해오시는 것도/ 좋은 방법입니다//\n\n팀원이 6명이면/ 한 주제당 이야기가 6개 모이고/ 그중 가장 재밌는 것만/ 편집으로 또 한번 추려집니다// 그럼 시청자는/ 그렇게 추려진 가장 재미있는 이야기/ 가장 재미있는 순간들만을/ 시청하게 되는 겁니다// 이게 크루레이블이/ 다인 팟캐스트로 가는/ 이유이자 최대 장점입니다//\n\n이 장점을 유지하려면/ 뭘 경계해야 할까요?/ 시청률이 안 나오는 거요?/ 그건 1%도 신경 쓸 필요 없습니다// 진짜 경계해야 할 건/ 팀이 오래가는 겁니다// 불화 없이/ 시기 질투 없이요// 그것만 유지되면/ 이 구조는/ 시간이 지날수록/ 시청률이 나올 수밖에 없습니다//\n\n그래서 여러분이 준비할 건/ 딱 두 가지입니다// 첫 번째/ 일주일 동안/ 그 주 주제에 대한 내 이야기를/ 잘 준비하는 것// 두 번째/ 방송날/ 타이밍 잡아 들어가는 연습/ 같은 이야기도 재밌게 전달하는 연습/ 그리고 캐릭터 케미와 연계해서/ 스토리텔링하는 연습입니다//\n\n그리고 아까 말씀드린 대로/ 시뮬레이션 주제들은/ 실제 동일한 주제로 진행한 방송에서/ 그대로 가져온 겁니다// 여러분이 먼저/ 체험해본 상태에서/ 다음 PART3에서는/ 같은 주제의 잘하는 케이스와 못하는 케이스를/ 비교해서 보여드릴 겁니다// 그래야 더/ 와닿을 테니까요//\n\n네 좋습니다/ 시뮬레이션 정말/ 수고 많으셨고요//\n\n오리엔테이션 PART2는/ 여기까지고요/ 10분간 쉬었다가/ PART3로 이어가겠습니다//\n\n아까도 말씀드렸지만/ 쉬는 동안/ 여러분 스스로 먼저/ 서로에게 다가가서/ 가볍게 대화 나눠보세요!\n\n잠시 휴식 후/ 00시00분까지/ 다시 착석해주시면/ 감사하겠습니다//"
       }
     ]
   }
