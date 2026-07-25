@@ -259,9 +259,59 @@
   .nav-zone svg { width: 26px; height: 26px; }
   #prevBtn { border-right: 1px solid #2c2c2e; }
 
+  .cover {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #1c1c1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 8vh 8vw;
+    cursor: pointer;
+  }
+
+  .cover-logo {
+    width: min(72vw, 480px);
+    height: auto;
+  }
+
+  .cover-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #f5f5f0;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .cover-sub {
+    font-size: 16px;
+    font-weight: 500;
+    color: #9a9a9f;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  .cover-hint {
+    position: absolute;
+    bottom: 6vh;
+    font-size: 14px;
+    color: #6b6b70;
+  }
 </style>
 </head>
 <body>
+
+<div class="cover" id="coverScreen">
+  <img src="https://crewlabel-rec.github.io/images/crew%20label%20logo%20white%20text.png" alt="크루레이블 로고" class="cover-logo">
+  <div>
+    <div class="cover-title">크루레이블 오리엔테이션 Q 카드</div>
+    <div class="cover-sub">Crew Label Orientation Q Card</div>
+  </div>
+  <div class="cover-hint">화면을 눌러 시작하세요</div>
+</div>
 
 <div class="stage">
   <div class="top-row">
@@ -487,6 +537,10 @@ document.getElementById('nextBtn').addEventListener('click', () => {
 });
 
 render();
+
+document.getElementById('coverScreen').addEventListener('click', function() {
+  this.style.display = 'none';
+});
 
 if (window.matchMedia('(display-mode: standalone)').matches) {
   document.addEventListener('click', function fullscreenOnce() {
